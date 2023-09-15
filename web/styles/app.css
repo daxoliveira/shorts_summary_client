@@ -12,3 +12,19 @@
 #app > img {
   width: 64px;
 }
+
+#app > h2 {
+  align-self: flex-start;
+  margin-top: 6.5rem;
+}
+
+#app > p {
+  align-self: flex-start;
+  text-align: justify;
+  width: 32rem;
+}
+
+#app .placeholder {
+  color: #7c7c8a;
+  user-select: none;
+}
