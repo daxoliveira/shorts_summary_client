@@ -6,6 +6,8 @@ const content = document.querySelector("#content")
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault()
+  content.classList.add("placeholder")
+
   const videoUrl = input.value
 
   if (!videoUrl.includes("shorts")) {
