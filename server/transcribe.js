@@ -1,5 +1,5 @@
 import { transcriptionExample } from "./utl/transcription.js"
 
-export async function transcribeAudio() {
+export async function transcribe() {
   return transcriptionExample
 }
