@@ -1,8 +1,10 @@
+import { server } from "./server.js"
+
 const form = document.querySelector("#form")
 const input = document.querySelector("#url")
 const content = document.querySelector("#content")
 
-form.addEventListener("submit", () => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault()
   const videoUrl = input.value
 
@@ -14,4 +16,8 @@ form.addEventListener("submit", () => {
   const [videoId] = params.split("?si")
 
   content.textContent = "Getting text from audio..."
+
+  await server.get("/summary/" + videoId)
+
+  content.textContent = "Finishing the summary..."
 })
