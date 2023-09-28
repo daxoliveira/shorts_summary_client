@@ -10,6 +10,10 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.get("/", (request, response) => {
+  return response.json({ message: "Hello World!" })
+})
+
 app.get("/summary/:id", async (request, response) => {
   try {
     await download(request.params.id)
