@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "env YTDL_NO_UPDATE=1 nodemon --no-warnings index.js"
+    "server": "env YTDL_NO_UPDATE=1 nodemon --no-warnings index.js",
+    "production": "node --no-warnings index.js"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +19,9 @@
     "ffmpeg-static": "^5.2.0",
     "fluent-ffmpeg": "^2.1.2",
     "node-wav": "^0.0.2",
-    "nodemon": "^3.0.1",
     "ytdl-core": "4.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
