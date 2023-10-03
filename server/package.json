@@ -6,7 +6,6 @@
   "type": "module",
   "scripts": {
     "dev": "env YTDL_NO_UPDATE=1 nodemon --no-warnings index.js",
-    "build": "echo \"No build specified\" && exit 1",
     "test": "echo \"No test specified\" && exit 1",
     "start": "node index.js"
   },
