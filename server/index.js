@@ -44,10 +44,12 @@ app.use(cors())
 // })
 
 app.get("/", (request, response) => {
+  response.set("Access-Control-Allow-Origin", "*")
   return response.json({ message: "Hello World!" })
 })
 
 app.get("/summary/:id", async (request, response) => {
+  response.set("Access-Control-Allow-Origin", "*")
   try {
     await download(request.params.id)
     const audioConverted = await convert()
@@ -61,6 +63,7 @@ app.get("/summary/:id", async (request, response) => {
 })
 
 app.post("/summary", async (request, response) => {
+  response.set("Access-Control-Allow-Origin", "*")
   try {
     const result = await summarize(request.body.text)
     return response.json({ result })
