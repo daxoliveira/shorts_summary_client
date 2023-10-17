@@ -10,6 +10,13 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
+app.all("/", function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
+  return res.json({ message: "Hello World!" })
+  next()
+})
+
 // app.use((req, res, next) => {
 //   res.setHeader(
 //     "Access-Control-Allow-Origin",
@@ -43,33 +50,35 @@ app.use(cors())
 //   next()
 // })
 
-app.get("/", (request, response) => {
-  response.set("Access-Control-Allow-Origin", "*")
-  return response.json({ message: "Hello World!" })
-})
+// app.get("/", (request, response) => {
+//   res.header("Access-Control-Allow-Origin", "*")
+//   return response.json({ message: "Hello World!" })
+// })
 
-app.get("/summary/:id", async (request, response) => {
-  response.set("Access-Control-Allow-Origin", "*")
+app.get("/summary/:id", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
   try {
-    await download(request.params.id)
+    await download(req.params.id)
     const audioConverted = await convert()
     const result = await transcribe(audioConverted)
 
-    return response.json({ result })
+    return res.json({ result })
   } catch (error) {
     console.log(error)
-    return response.json({ error })
+    return res.json({ error })
   }
 })
 
-app.post("/summary", async (request, response) => {
-  response.set("Access-Control-Allow-Origin", "*")
+app.post("/summary", async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "X-Requested-With")
   try {
-    const result = await summarize(request.body.text)
-    return response.json({ result })
+    const result = await summarize(req.body.text)
+    return res.json({ result })
   } catch (error) {
     console.log(error)
-    return response.json({ error })
+    return res.json({ error })
   }
 })
 

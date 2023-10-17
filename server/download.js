@@ -9,6 +9,7 @@ if (!fs.existsSync("./tmp")) {
 export const download = (videoId) =>
   new Promise((resolve, reject) => {
     const videoUrl = "https://www.youtube.com/shorts/" + videoId
+    console.log("New Video URL: ", videoUrl)
     const filePath = "./tmp/audio.mp4"
     console.log("Downloading video..." + videoId)
 
